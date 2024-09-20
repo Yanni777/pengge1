@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql:///sm_db
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 80
