@@ -6,6 +6,27 @@ spring:
       username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
+
 server:
-  # 服务器的HTTP端口，默认为8080
+  # 服务器的HTTP端口
   port: 80
+
+#MQTT客户端
+publish:
+  mqtt:
+    host: tcp://broker.emqx.io:1883
+    clientId: mqtt_mynmyn_3
+    options:
+      # 这里表示会话过不过期
+      cleanSession: false
+      # 配置一个默认的主题，加载时不会用到，只能在需要时手动提取
+      defaultTopic: devops
+      timeout: 1000
+      KeepAliveInterval: 10
+      #断线重连方式，自动重新连接与会话不过期配合使用会导致
+      #断线重新连接后会接收到断线期间的消息。需要更改设置请看password联系我
+      automaticReconnect: false
+      #连接超时时长，收到服务器连接确认前的等待时间，等待时间内未收到连接确认则为连接失败。
+#      connectionTimeout: 3000
+      # 最大链接数
+      maxInflight: 100
