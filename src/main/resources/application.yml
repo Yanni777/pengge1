@@ -18,7 +18,7 @@ publish:
     clientId: mqtt_mynmyn_3
     options:
       # 这里表示会话过不过期
-      cleanSession: false
+      cleanSession: true
       # 配置一个默认的主题，加载时不会用到，只能在需要时手动提取
       defaultTopic: devops
       timeout: 1000

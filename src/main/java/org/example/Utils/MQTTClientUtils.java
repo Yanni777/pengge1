@@ -139,7 +139,17 @@ public class MQTTClientUtils {
             e.printStackTrace();
         }
     }
-
+    public void subscribe(String topic)  {
+        try {                                   //Lamda表达式，实现IMqttMessageListener接口并重写 messageArrived 方法。这个方法会在收到消息时被调用
+            mqttClient.subscribe(topic, 1, (topic1, message) -> {
+                // 当收到消息时，输出日志
+                System.out.println("收到消息，主题：" + topic1 + "，内容：" + new String(message.getPayload()));
+            });
+        } catch (MqttException e) {
+            log.info("订阅失败");
+            e.printStackTrace();
+        }
+    }
     /**
      * 取消订阅主题
      * @param topicName 主题名称
@@ -161,7 +171,7 @@ public class MQTTClientUtils {
         //这里主要是项目启动时订阅一些主题。看个人需要使用
         //mqttClientUtils.subscribe("test/#", 2, new HeartBeatListener());
         //MessageCallbackListener订阅主题，接受到该主题消息后交给MessageCallbackListener去处理
-         mqttClientUtils.subscribe("testtopic/#", 1, new MqttMessageListener());
+//         mqttClientUtils.subscribe("testtopic/#", 1, new MqttMessageListener());
         //需要注意的是new MessageCallbackListener()虽然会接收到消息，但这么做不对。
         //举个简单列子：就是你有切面对MessageCallbackListener中重写的方法做一些其他操作，
         //那么接收到消息后该切面并不会生效，所以不建议这么做,以下是修改过后的。

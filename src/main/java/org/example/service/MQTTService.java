@@ -1,6 +1,7 @@
 package org.example.service;
 
 import jakarta.annotation.Resource;
+import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 import org.example.Utils.MQTTClientUtils;
 import org.springframework.stereotype.Service;
 
@@ -35,4 +36,11 @@ public class MQTTService {
         mqttClientUtils.publish(topicName, qos, message);
     }
 
+    public void subscribe(String topicName, int qos, IMqttMessageListener messageListener){
+        mqttClientUtils.subscribe(topicName, qos, messageListener);
+    }
+
+    public void subscribe(String topicName){
+        mqttClientUtils.subscribe(topicName);
+    }
 }
