@@ -1,4 +1,5 @@
 package org.example.domain;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.Date;
 @TableName(value ="news_headline")
 @Data
 public class NewsHeadline implements Serializable {
+    @TableId
     private Integer hid;
 
     private String title;
