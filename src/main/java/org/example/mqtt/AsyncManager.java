@@ -41,7 +41,7 @@ public class AsyncManager {
      * @param task 任务
      */
     public void execute(TimerTask task) {
-        executor.schedule(task, OPERATE_DELAY_TIME,  java. util. concurrent.TimeUnit.MILLISECONDS);
+        executor.schedule(task, OPERATE_DELAY_TIME, java.util.concurrent.TimeUnit.MILLISECONDS);
     }
 
     /**
