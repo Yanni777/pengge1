@@ -22,4 +22,10 @@ public class MQTTController {
         mqttService.sendMessage("testtopic/1212121212",2,message);
         return "success";
     }
+    @GetMapping("/subscribe")
+    public String subscribe() {
+//        mqttService.subscribe("myTopic/#", 1, new MqttMessageListener()); 可能是回调函数写的不对，接收不到消息
+        mqttService.subscribe("myTopic/#");
+        return "success";
+    }
 }
