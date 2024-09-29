@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 public class ScheduledTest {
     @Scheduled(cron = "0/5 * * * * *")
     public void test() {
-        System.out.println("收到一条新信息。");
+        System.out.println("schedule测试。。。。");
     }
 }

@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.service.impl;
 
 import jakarta.annotation.Resource;
 import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
