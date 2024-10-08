@@ -1,10 +1,9 @@
-package org.example.service;
+package org.example.service.impl;
 
 import com.rabbitmq.client.Channel;
 import org.example.Utils.RabbitMqUtils;
+import org.example.service.RabbitMQService;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 /**
  * @author hp
