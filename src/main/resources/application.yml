@@ -1,3 +1,7 @@
+server:
+  # 服务器的HTTP端口
+  port: 80
+
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -6,10 +10,13 @@ spring:
       username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
-
-server:
-  # 服务器的HTTP端口
-  port: 80
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: group_01
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 #MQTT客户端
 publish:
