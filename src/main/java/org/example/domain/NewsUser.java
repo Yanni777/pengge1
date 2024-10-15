@@ -1,5 +1,6 @@
 package org.example.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @TableName(value ="news_user")
 @Data
 public class NewsUser implements Serializable {
+    @TableId
     private Integer uid;
 
     private String username;
