@@ -10,6 +10,23 @@ spring:
       username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
+      # 启用监控统计
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/* # 访问监控页面的路径
+        login-username: admin
+        login-password: admin123
+        reset-enable: false # 是否允许重置监控数据
+      # WebStatFilter 用于采集 web-jdbc 关联监控的数据
+      web-stat-filter:
+        enabled: true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      # 配置监控和统计拦截的filters
+      filters:
+        stat: enabled # 启用 SQL 执行的统计功能
+        log4j: enabled # 监控数据输出到日志文件
+        wall: enabled # 启用SQL 防火墙
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
