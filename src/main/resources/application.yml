@@ -66,3 +66,8 @@ publish:
 #      connectionTimeout: 3000
       # 最大链接数
       maxInflight: 100
+
+token:
+  secretKey: 56fgnv69046tfgh8b
+  expiresTime: 100000
+  refreshTime: 100000
