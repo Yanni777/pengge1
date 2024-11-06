@@ -7,6 +7,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 public class RedisConfig {
@@ -27,9 +29,18 @@ public class RedisConfig {
 
 //    区分不同类型的redisTemplate
     @Bean
-    public RedisTemplate<String, Object> redisTemplateObject(RedisConnectionFactory connectionFactory) {
+    public RedisTemplate<String, Object> redisTemplateObject(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(connectionFactory);
+        template.setConnectionFactory(redisConnectionFactory);
+        // 设置key的序列化器
+        template.setKeySerializer(new StringRedisSerializer());
+        // 设置value的序列化器
+        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+
+        // 设置hash key和value的序列化器
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
+        template.afterPropertiesSet();
         return template;
     }
 
@@ -37,6 +48,15 @@ public class RedisConfig {
     public RedisTemplate<String, String> redisTemplateString(RedisConnectionFactory connectionFactory) {
         RedisTemplate<String, String> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
+        // 设置key的序列化器
+        template.setKeySerializer(new StringRedisSerializer());
+        // 设置value的序列化器
+        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+
+        // 设置hash key和value的序列化器
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
+        template.afterPropertiesSet();
         return template;
     }
 }
